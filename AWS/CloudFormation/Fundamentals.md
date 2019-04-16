@@ -96,36 +96,36 @@ JSON:
 YAML:
 ```yaml
 Resources:
-	MyEC2Instance:
-		Type: "AWS::EC2::Instance"
-		Properties:
-			ImageId: "ami-43874721"
-			InstanceType: t2.micro
+ MyEC2Instance:
+  Type: "AWS::EC2::Instance"
+  Properties:
+   ImageId: "ami-43874721"
+   InstanceType: t2.micro
 ```
 * **Example**: Creating an S3 bucket for a static website
 
 ```yaml
 Resources:
-	MyS3Bucket:
-		Type: AWS::S3::Bucket
-		Properties:
-			BucketName: HelloWorld
-			AccessControl: PublicRead
-			WebsiteConfiguration:
-				IndexDocument: index.html
+ MyS3Bucket:
+  Type: AWS::S3::Bucket
+  Properties:
+   BucketName: HelloWorld
+   AccessControl: PublicRead
+   WebsiteConfiguration:
+    IndexDocument: index.html
 ```
 
 * **Example**: Creating a simple Security Group
 
 ```yaml
 Resources:
-	MySecurityGroup:
-		Type: AWS::EC2::SecurityGroup
-		Properties:
-			GroupDescription: Enable SSH access via port 22
-			SecurityGroupIngress:
-				- IpProtocol: tcp
-				  FromPort: '22'
-				  ToPort: '22'
-				  CidrIp: 0.0.0.0/0
+ MySecurityGroup:
+  Type: AWS::EC2::SecurityGroup
+  Properties:
+   GroupDescription: Enable SSH access via port 22
+   SecurityGroupIngress:
+    - IpProtocol: tcp
+      FromPort: '22'
+      ToPort: '22'
+      CidrIp: 0.0.0.0/0
 ```
