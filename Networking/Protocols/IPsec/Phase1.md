@@ -1,10 +1,73 @@
 # Phase 1 In-depth
+**Sources:**
+* [ISAKMP - RFC 2408](https://tools.ietf.org/html/rfc2408)
+* [IKEv1 - RFC 2409](https://tools.ietf.org/html/rfc2409)
 ## ISAKMP Header
+```
+                         1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    !                          Initiator                            !
+    !                            Cookie                             !
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    !                          Responder                            !
+    !                            Cookie                             !
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    !  Next Payload ! MjVer ! MnVer ! Exchange Type !     Flags     !
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    !                          Message ID                           !
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    !                            Length                             !
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
 **RFC 2408**
 
 ## Packet Exchange
+```
+   When doing a pre-shared key authentication, Main Mode is defined as
+   follows:
+
+              Initiator                        Responder
+             ----------                       -----------
+              HDR, SA             -->
+                                  <--    HDR, SA
+              HDR, KE, Ni         -->
+                                  <--    HDR, KE, Nr
+              HDR*, IDii, HASH_I  -->
+                                  <--    HDR*, IDir, HASH_R
+```
+**RFC 2409**
 
 ## SA Payload
+```
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~             ISAKMP Header with XCHG of Main Mode,             ~
+      ~                  and Next Payload of ISA_SA                   ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !       0       !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !                  Domain of Interpretation                     !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !                          Situation                            !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !       0       !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !  Proposal #1  ! PROTO_ISAKMP  ! SPI size = 0  | # Transforms  !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !    ISA_TRANS  !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !  Transform #1 !  KEY_OAKLEY   |          RESERVED2            !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~                   prefered SA attributes                      ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !       0       !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !  Transform #2 !  KEY_OAKLEY   |          RESERVED2            !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~                   alternate SA attributes                     ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
 **RFC 2409**
  
 * Message 1
@@ -20,6 +83,21 @@
     * Most of the fields are the same, but the responder agrees only to a single proposal/transform pair sent by the initiator
 
 ## KE/Nonce Payload
+```
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~             ISAKMP Header with XCHG of Main Mode,             ~
+      ~                  and Next Payload of ISA_KE                   ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !    ISA_NONCE  !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~   D-H Public Value  (g^xi from initiator g^xr from responder) ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      !       0       !    RESERVED   !        Payload Length         !
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      ~         Ni (from initiator) or  Nr (from responder)           ~
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
 **RFC 2409**
 
 * Message 3

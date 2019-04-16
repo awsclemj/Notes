@@ -1,5 +1,7 @@
 # NAT-Traversal
 
+Source: How Does NAT-T work with IPSec? | VPN | Cisco Support Community](https://supportforums.cisco.com/document/64281/how-does-nat-t-work-ipsec)
+
 ## Overview
 * ESP
     * IP protocol, therefore does not have TCP/UDP port numbers in its header
@@ -33,4 +35,3 @@
     * This gives the PAT database enough information to uniquely bind these packets
     * Successful bidirectional translation
     * Source port will be changed to a random high number, dest. remains 4500
-[How Does NAT-T work with IPSec? | VPN | Cisco Support Community](https://supportforums.cisco.com/document/64281/how-does-nat-t-work-ipsec)
