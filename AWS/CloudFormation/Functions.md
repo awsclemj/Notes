@@ -17,4 +17,4 @@ YAML:
 !Join [ ":", [ a, b, c ] ]
 ```
 
-* Both of the above would output the value "a\:b\:c"
+* Both of the above would output the value `"a:b:c"`

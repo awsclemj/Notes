@@ -70,10 +70,10 @@ Resources section in JSON:
 Resources section in YAML:
 ```yaml
 Resources:
-	Logical ID: #Reference this ID throughout the local template
-		Type: Resource type #This is the actual resource type we will create
-		Properties:
-			Set of properties #Various properties can be configured for the resource
+ Logical ID: #Reference this ID throughout the local template
+  Type: Resource type #This is the actual resource type we will create
+  Properties:
+   Set of properties #Various properties can be configured for the resource
 ```
 
 * **Example**: Creating a simple EC2 instance
