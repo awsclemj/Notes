@@ -1,5 +1,6 @@
 ## Intrinsic Functions
 * Built-in functions that help you manage the stack
+* [List of Intrinsic Functions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html)
 
 ### Join
 * Appends a set of values into a single value
@@ -18,3 +19,4 @@ YAML:
 ```
 
 * Both of the above would output the value `"a:b:c"`
+

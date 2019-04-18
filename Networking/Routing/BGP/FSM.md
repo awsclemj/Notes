@@ -1,5 +1,8 @@
 # Finite-state Machine (FSM)
 
+![BGP FSM](https://en.wikipedia.org/wiki/Border_Gateway_Protocol#/media/File:BGP_FSM.svg "BGP Finite State Machine")
+**Source: Wikipedia**
+
 * Finite-state machines (FSM)
     * Idle
         * Refuses all incoming BGP connections

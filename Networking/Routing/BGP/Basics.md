@@ -1,4 +1,8 @@
 # BGP
+Sources:
+* [RFC 4271](https://tools.ietf.org/html/rfc4271)
+* [BGP Packet Capture](https://www.cloudshark.org/captures/005a2e2381cd)
+
 ## Basics
 * Basic BGP
     * Exterior gateway protocol 
@@ -78,6 +82,25 @@
         4. KEEPALIVE
 
 * OPEN message
+```
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+
+       |    Version    |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |     My Autonomous System      |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |           Hold Time           |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                         BGP Identifier                        |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | Opt Parm Len  |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                                                               |
+       |             Optional Parameters (variable)                    |
+       |                                                               |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
 **Source: RFC 4271**
     * Version: 1-byte field indicates protocol version number. Current version is 4.
     * My Autonomous System: 2-byte field indicates ASN of sender
@@ -89,7 +112,20 @@
     * Optional Parameters Length: 1-byte field indicating length of optional parameters field.
     * Optional Parameters: List of optional parameters supported by sender
 
-    * UPDATE Message
+* UPDATE Message
+```
+      +-----------------------------------------------------+
+      |   Withdrawn Routes Length (2 octets)                |
+      +-----------------------------------------------------+
+      |   Withdrawn Routes (variable)                       |
+      +-----------------------------------------------------+
+      |   Total Path Attribute Length (2 octets)            |
+      +-----------------------------------------------------+
+      |   Path Attributes (variable)                        |
+      +-----------------------------------------------------+
+      |   Network Layer Reachability Information (variable) |
+      +-----------------------------------------------------+
+```
 **Source: RFC 4271**
     * Withdrawn Routes Length: 2-byte field indicating total length of Withdrawn routes field. Allows length of NLRI field to be determined
     * Withdrawn Routes: Variable-length field that contains list of IP address prefixes being withdrawn from service
