@@ -101,7 +101,6 @@ Sources:
        |                                                               |
        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
-**Source: RFC 4271**
     * Version: 1-byte field indicates protocol version number. Current version is 4.
     * My Autonomous System: 2-byte field indicates ASN of sender
     * Hold Time: 2-byte field indicates number of seconds sender proposes for value of Hold Timer. 
@@ -126,7 +125,6 @@ Sources:
       |   Network Layer Reachability Information (variable) |
       +-----------------------------------------------------+
 ```
-**Source: RFC 4271**
     * Withdrawn Routes Length: 2-byte field indicating total length of Withdrawn routes field. Allows length of NLRI field to be determined
     * Withdrawn Routes: Variable-length field that contains list of IP address prefixes being withdrawn from service
     * Total Path Attribute Length: 2-byte field indicates the total length of the Path Attributes field in bytes. 

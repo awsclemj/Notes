@@ -1,6 +1,6 @@
 # Finite-state Machine (FSM)
 
-![BGP FSM](https://en.wikipedia.org/wiki/Border_Gateway_Protocol#/media/File:BGP_FSM.svg "BGP Finite State Machine")
+![BGP FSM](https://www.inetdaemon.com/img/BGP_FiniteStateMachine.gif "BGP FSM")
 **Source: Wikipedia**
 
 * Finite-state machines (FSM)
