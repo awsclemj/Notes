@@ -60,7 +60,7 @@
 * Goal is not to provide high-level abstrations. That is left to the application layer
 * Simply handles all lower-level details of making requests and receiving responses
 
-### Code Exmaples
+### Code Examples
 * Resource:
 ```python
 import boto3
