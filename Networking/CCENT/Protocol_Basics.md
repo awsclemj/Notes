@@ -39,6 +39,7 @@
 	* Sub-domain - (sub-domain of a parent, for example, **mail**.google.com)
 	* Host - the host where the name resides
 * Common DNS Records:
+
 Record Type | Description
 --- | ---
 A | An **address record** is used to map a hostname to an IPv4 address

@@ -98,6 +98,7 @@ def read_csv(file):
 * You can upload raw video files to S3 and have Elastic Transcoder autmoatically convert the files to play on different devices (smartphones, tablets, PCs, etc.)
 * Ensure that your Lambda function has the correct execution role for S3 GETs and to interact with Elastic Transcoder
 * Example code:
+
 ```python
 from datetime import datetime
 import json
