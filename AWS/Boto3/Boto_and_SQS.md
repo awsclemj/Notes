@@ -52,5 +52,5 @@ def lambda_handler(event, context):
 
         # Delete SQS message
         message.delete()
-		print("Deleted message:", message.message_id)
+        print("Deleted message:", message.message_id)
 ```

@@ -92,7 +92,7 @@ def read_csv(file):
             data['Meta'] = {k: v for k,
                             v in data['Meta'].items() if v is not None} #This will remove any keys with empty values
             items.append(data)
-``` 
+```
 
 ### Transcoding Video with S3 and Elastic Transcoder
 * You can upload raw video files to S3 and have Elastic Transcoder autmoatically convert the files to play on different devices (smartphones, tablets, PCs, etc.)
