@@ -28,7 +28,7 @@
 * You can create your own AMIs, choose from a list of AWS/community AMIs, or choose one from the marketplace
 * Three main categories:
     * Community - free to use, generally you get to select the OS you want
-    * Marketplace - pay to use, comes packages with additional licensed software
+    * Marketplace - pay to use, comes packaged with additional licensed software
     * My AMIs - AMIs that you have created yourself
 
 #### Purchasing Options
