@@ -51,7 +51,7 @@
     * However, they operate at the instance level
     * The way these rules work are different than NACLs:
         1. Only support allow rules
-        2. Stateful; return traffic requests are allowed regardlesss of rules
+        2. Stateful; return traffic requests are allowed regardless of rules
         3. All rules are evaluated before deciding to allow traffic
     
 #### Bastion Hosts and NAT Gateways
@@ -96,5 +96,5 @@
     * Consider a single EC2 instance could be running multiple containers with a randomly assigned port
     * These ports are not static; when containers are shutdown/restarted, they could receive new port numbers
     * These are facilitated by Target Groups
-        * The TG tracks lists of ports that are accepting traffic on each instance and provides the LB a means to distrbute traffic across the ports
+        * The TG tracks lists of ports that are accepting traffic on each instance and provides the LB a means to distribute traffic across the ports
     * This makes ALB/NLB ideal for running Docker/ECS workloads
