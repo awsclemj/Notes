@@ -3,7 +3,7 @@
 
 ### Design Principles
 * Traditional environment:
-    * Costs are centrailized/ no incentive to review costs
+    * Costs are centralized/ no incentive to review costs
     * Employ people to maintain servers
     * Pay upfront in a CAPEX intensive way
     * Can't benefit from economy of scale
