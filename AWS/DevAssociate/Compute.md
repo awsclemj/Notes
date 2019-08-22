@@ -225,3 +225,30 @@
     * You can isolate permissions based on task
     * Good for auditing purposes
 * Set IAM role when creating a Task Definition
+
+### Elastic Beanstalk
+* Service that allows you to easily scale/deploy your web application
+* Supports a variety of programming languages and technologies like Docker, Apache, and Nginx
+* Designed for less complex applications; reduces the management required for building/deploying apps
+* Builds single-tier applications that take advantage of services such as:
+    * EC2
+    * Auto Scaling
+    * ELB
+    * RDS
+    * SQS
+    * CloudFront
+* Why use Beanstalk?
+    * Quickly provision an AWS environment that requires little management
+    * Application fits within parameters of the Beanstalk service
+    * Deploy from repos or uploaded files
+    * Update by uploading new code files or requesting a pull from a repo
+* Supported platforms:
+    * Docker
+    * Packer
+    * Java
+    * .NET
+    * Node.js
+    * PHP
+    * Python
+    * Ruby
+    * Go
