@@ -173,3 +173,55 @@
     * ELB requests are evenly distributed to instances
     * Instances check ElastiCache for the session
     * If no session exists, the isntance can check a backing database
+
+### Elastic Container Service
+* Docker-compatible container management service provided by AWS. Allows for easy container deployment on fleets of EC2 instances. Highly available/fault tolerant.
+* **Fargate** allows you to use containers while AWS manages EC2 instances for you
+
+#### Why Use ECS?
+* Create distributed apps and microservices architectures
+    * Architectures comprised of independent tasks/processes
+    * Can have separate containers for various components of your application:
+        * Web server
+        * App server
+        * Message queue
+        * Backend servers
+    * Allows you to start, stop, manage, monitor, and scale each container independently
+* Batch and ETL jobs:
+    * Package batch and ETL jobs into containers and deploy them into shared EC2 cluster(s)
+    * Run different versions of the same job or multiple jobs on the same cluster
+    * Share cluster capacity with other processes and/or grow jobs dynamically on-demand
+* CI/CD:
+    * By using Docker's image versioning, you can use containers for continuous integration and deployment
+    * Build processes can pull, build, and create Docker images for your containers
+
+#### Working with ECS
+* Dockerfile - A plain text file (script) that specifies all the components that are included in the container
+* Docker image - Built from the Dockerfile. Contains all the downloaded software, code, runtime, system tools, and libraries as specified in the Dockerfile script
+* Container registry - repo where container images are stored and accessed when needed
+    * Can be located on AWS via Elastic Container Registry (ECR), 3rd party repo like Docker Hub, or a self-hosted registry
+* Task definition - JSON-formatted text file that contains "blueprint" for the application, including:
+    * Which container image to use
+    * The repo the image is located in
+    * Which ports should be open on the container instance
+    * What data volumes should be used with the containers
+* Task - actual representation of the Task Definition on the EC2 instances inside of the container cluster
+    * ECS Agent will start/stop these tasks based on instruction/schedule
+* ECS Agent - runs on the EC2 instance in the ECS cluster. Communicates information such as running tasks and resource util. Also starts/stops tasks.
+
+#### Docker Essentials
+* Software platform that allows you to build, test, and deploy applications quickly. Packages software into standardized units called containers that have everything they software needs to run:
+    * Libraries
+    * System tools
+    * Code
+    * Runtime
+* Docker lets you ship code faster, standardize application ops, seamlessly move code, and save money by improving resource util. 
+* Docker allows you to decouple applications into multiple containers and all containers are highly portable between difference OSes
+
+#### IAM Roles for ECS Tasks
+* ECS tasks can assume IAM roles to perform actions on your AWS resources
+* Benefits:
+    * Tasks can only perform actions based on the policy attached to the role
+    * You can isolate permissions based on task
+    * Good for auditing purposes
+* Set IAM role when creating a Task Definition

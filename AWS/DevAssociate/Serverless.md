@@ -97,3 +97,16 @@ All Lambda runtimes deal with similar concepts, including:
 * Invoke - Invokes a specified Lambda function. Can also specify invocation type (synchronous/asynchronous)
 * CreateEventSourceMapping - Identifies a stream as an event source for a Lambda function (DynamoDB or Kinesis stream)
     * The association between a stream source and Lambda function is called the event source mapping
+
+### Environment Variables
+* As a general rule of thumb, secrets like database connection strings and passwords should not be hard-coded in your application
+    * You can store these as environment variables instead; allow you to dynamically assign secrets to your Lambda functions
+* This allows you to abstract this data and use the same variable in multiple functions, and you can change these secrets/values in one place only
+* There are several default environment variables available
+
+### Example Use Cases
+* Data processing - execute code in response to triggers such as changes in data (DynamoDB)
+* Real-time file processing - Use S3 file upload to trigger Lambda to process data
+* Real-time stream processing - use Lambda and Kinesis to process real-time streaming data for application activity tracking, click stream analysis, etc.
+* ETL - perform data validation, filtering, sorting, or other transformations for changes in DynamoDB tables and load transformed data to another store.
+* IOT backend - serverless backends to handle web, mobile, IOT, and third party API requests
