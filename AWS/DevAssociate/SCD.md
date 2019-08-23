@@ -150,3 +150,71 @@
             * More permission control and better auditing of access to data
         * Customer-Provided Keys (SSE-C)
             * You manage the keys, S3 manages encryption/decryption when writing to disk/accessing objects
+
+### Object Versioning
+* A feature to manage and store all old/new/deleted versions of an object. By default, versioning is disabled. 
+* Set on the bucket level and applies to all objects
+* Lifecycle policies can be added to specific versions of an object
+
+#### Enabling Versioning
+* Existing objects will remain unchanged and have a null version ID
+* New objects are automatically given unique version IDs and each version is billed as a new S3 object. These are not deltas of the previous version. 
+
+#### Deleting Versioned Objects
+* When a delete is made to an object (without specifying version ID), all versions of the object remain in the bucket
+    * S3 inserts a delete marker at the latest version. If you try to retrieve it, S3 returns a 404 error
+    * You can still get a specific version by specifying the version ID
+* To permanently delete a version, make a delete request with the version ID to be deleted. 
+
+#### Restoring Versioned Objects
+* Delete the current version to fall back to a previous version. Repeat until you have the version you want
+* Copy a previous version of the object to the same bucket; this adds a new object to the bucket that becomes the current version
+
+### Storage Classes
+* Standard - general purpose storage, 11 9s durability, 4 9s availability, most expensive
+* RRS (not recommended) - non-critical objects, 4 9s durability and availability, less expensive than standard
+* Standard-IA - for objects not frequently accessed. 11 9s durability, 99.90% availability, less expensive than standard and RRS 
+* OneZone-IA - for objects not frequently accessed; only replicated in one AZ 
+* Glacier - data archival; can take several hours to be changed/retrieved. 11 9s durability, very cheap
+    * Three levels of retrieval:
+        * Expedited - 1-5 minutes
+        * Standard - 3-5 hours
+        * Bulk - 5-12 hours
+
+### Lifecycle Policies
+* Set of rules to automate migration of an object's storage class to a different storage class, or deletion, based on specified rules
+* Disabled by default
+* Can be combined with versioning for archiving/backup solutions. For example, send non-current versions to Glacier after X days, or permanently delete them
+* Objects must age for at least 30 days before moving from IA to another storage class
+
+### Static Website Hosting
+* Option for low-cost, highly-reliable hosting service for static websites. Includes content like HTML, CSS, and Javascript
+* You can specify an index file and error file
+* URL format: `bucket-name.s3-website(- or .)region.amazonaws.com`. You can also map Route 53 domain names to static web site buckets
+* **Cross-Origin Resource Sharing**:
+    * CORS is a method of allowing web applications located in one domain to access resources from another domain
+    * For example, a web app hosted in one S3 bucket can access resources in another S3 bucket
+    * Example:
+    ```xml
+    <CORSConfiguration>
+        <CORSRule>
+            <AllowedOrigin>*</AllowedOrigin>
+            <AllowedMethod>GET</AllowedMethod>
+            <AllowedHeader>Authorization</AllowedHeader>
+        </CORSRule>
+    </CORSConfiguration>
+    ```
+
+### CloudFront Basics
+* Global CDN which delivers content from an origin location. This can be S3, ELB, EC2 instances, or any other custom origin
+* Static objects are cached at global edge locations; this allows users to experience lower latencies and reduces load on your resources
+* Can integrate with Route 53 for CNAMEs or alias records
+
+#### Updating Cached Files
+* Caching is done based off of the object name; in order to save a new version, you can:
+    * Create new object with a new name
+    * Invalidate the object(s) on the CloudFront distro. Note that invalidations have an associated cost.
+    * Cached objects can be set with a specific expiration time, or set not to cache at all
+
+#### Signed URLs
+* Allow access to "private content" by creating a temporary URL signed with an x.509 cert and based off of the number of seconds you want it to be accessible
