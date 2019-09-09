@@ -46,13 +46,13 @@
 ### Security Token Service (STS)
 * Allows you to create temporary creds to grant trusted users access to your AWS resources
 * These creds are for short-term use only (a few minutes to several hours)
-* Once expired, they can no mlonger be used
+* Once expired, they can no longer be used
 * When requested through an STS API call, the following creds are returned:
     * Security token
     * Access Key ID
     * Secret access key
 * Key benefits:
-    * No distributing or membedding long-term AWS creds in an application
+    * No distributing or embedding long-term AWS creds in an application
     * Grant access to AWS resources without having to create an IAM identity
     * Creds don't have to be rotated or revoked
 * When to use:
