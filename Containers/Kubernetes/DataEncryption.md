@@ -8,7 +8,7 @@ Notes taken from Linux Academy's Kubernetes the Hard Way course.
 * More info: [https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/]
 
 ### Generating the Data Encryption Config
-* Frist, we can use the following code to generate an encryption key and store it in a config file:
+* First, we can use the following code to generate an encryption key and store it in a config file:
 ```bash
 # Create and store the key in a base64-encoded environment variable
 ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)

@@ -24,8 +24,8 @@ Tools needed on the client side:
 
 ### CA and TLS Certificates
 * **Certificates** are used to authenticate identity. They prove you are who you say you are. 
-* A **Certificate Authority (CA)** provides the ability to confirm a certificate is valid. The CA can be used to validate any certifiate issued by that same CA.
-* K8s uses these certificates for a variety of functions. Different parts of the clsuter will validate certs using the CA.
+* A **Certificate Authority (CA)** provides the ability to confirm a certificate is valid. The CA can be used to validate any certificate issued by that same CA.
+* K8s uses these certificates for a variety of functions. Different parts of the cluster will validate certs using the CA.
 
 #### What certificates do we need?
 * **Client Certificates** - provide client authentication for various users: admin, kube-controller-manager, kube-proxy, kube-scheduler, and the kubelet client on each worker node
