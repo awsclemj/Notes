@@ -5,6 +5,9 @@
   - [Ingress and Load Balancers](#ingress-and-load-balancers)
     - [Load Balancers](#load-balancers)
     - [Ingress](#ingress)
+  - [Cluster DNS](#cluster-dns)
+    - [Headless Services](#headless-services)
+    - [DNS Policies](#dns-policies)
 
 # Kubernetes Networking
 Notes taken via Linux Academy's Certified Kubernetes Admin course.
@@ -143,3 +146,84 @@ Basic manipulation/discovery:
 * To view existing rules: `kubectl describe ingress`
 * `curl` the Service: `curl http://kubeserve.example.com`
 
+## Cluster DNS
+CoreDNS is the default DNS plugin for k8s. It's a flexible DNS server written in Go; benefits of Go include having memory-safe executables. This ensures that you won't be susceptible to buffer overruns. It supports DNS of TLS and easily integrates with **etcd** and cloud vendors to pull authoritative data into your k8s cluster. 
+
+Basic discovery:
+* You will see it running as two pods in the `kube-system` namespace: `kubectl get pods -n kube-system`
+* The CoreDNS Pods are running as a Deployment: `kubectl get deployments -n kube-system`
+* There is also a Service that performs load balancing for CoreDNS: `kubectl get services -n kube-system`
+
+You can spin up a busybox container to test DNS resolution within your cluster:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+  - image: busybox:1.28.4
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always
+```
+Checking DNS resolution:
+* Check `resolv.conf`: `kubectl exec busybox -- cat /etc/resolv.conf`
+* Lookup the kubernetes service DNS name: `kubectl exec busybox -- nslookup kubernetes`
+* Lookup DNS names for your Pods: `kubectl exec busybox -- nslookup [pod-ip-address].default.pod.cluster.local`
+* Lookup a Service in your cluster: `kubectl exec busybox -- nslookup kube-dns.kube-system.svc.cluster.local`
+
+Check logs for CoreDNS Pods: `kubectl logs <CoreDNS Pod name>`
+
+DNS names within the cluster adhere to the following formats:
+* Pods: `<pod-ip-addr>.<namespace>.pod.cluster.local`
+* Services: `<Service name>.<namespace>.svc.cluster.local`
+
+### Headless Services
+A headless Service is simply a Service without a ClusterIP associated with it. This can be used so DNS lookups will return the IP addresses for the Pods behind the Service.
+
+A basic example manifest:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-headless
+spec:
+  clusterIP: None
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: kubserve2
+```
+
+### DNS Policies
+By Default, Pods launched on a node will use the node's default DNS policy. To override this, you can include your own DNS policy in the Pod spec.
+
+Example:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: default
+  name: dns-example
+spec:
+  containers:
+    - name: test
+      image: nginx
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 8.8.8.8
+    searches:
+      - ns1.svc.cluster.local
+      - my.dns.search.suffix
+    options:
+      - name: ndots
+        value: "2"
+      - name: edns0
+```
