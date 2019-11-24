@@ -1,3 +1,11 @@
+- [Amazon VPC Networking](#amazon-vpc-networking)
+  - [VPC Essentials](#vpc-essentials)
+  - [VPC Networking Basics/Components](#vpc-networking-basicscomponents)
+  - [VPC Security Basics](#vpc-security-basics)
+    - [Bastion Hosts and NAT Gateways](#bastion-hosts-and-nat-gateways)
+  - [HA/Fault Tolerance](#hafault-tolerance)
+  - [Load Balancers](#load-balancers)
+
 ## Amazon VPC Networking
 * Networking in the cloud. Notes taken from AWS Developer Associate course on Linux Academy.
 

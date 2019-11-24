@@ -1,3 +1,7 @@
+- [Protocol Reference Models](#protocol-reference-models)
+  - [OSI Model](#osi-model)
+  - [TCP/IP Model (AKA DoD Model)](#tcpip-model-aka-dod-model)
+
 ## Protocol Reference Models
 ![Model Comparison](https://www.inetdaemon.com/img/network_models.png "Model Comparison")
 * Source: Inetdaemon

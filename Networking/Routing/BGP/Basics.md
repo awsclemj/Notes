@@ -1,3 +1,11 @@
+- [BGP](#bgp)
+  - [Basics](#basics)
+  - [Traffic classification](#traffic-classification)
+  - [Operation](#operation)
+  - [Messages/Tables](#messagestables)
+  - [Routing Information Base (RIB)](#routing-information-base-rib)
+  - [Messages In-Depth](#messages-in-depth)
+
 # BGP
 Sources:
 * [RFC 4271](https://tools.ietf.org/html/rfc4271)

@@ -1,3 +1,22 @@
+- [AWS Application Services](#aws-application-services)
+  - [Simple Notification Service (SNS)](#simple-notification-service-sns)
+    - [SNS Access Control Policies](#sns-access-control-policies)
+    - [Message Data](#message-data)
+    - [Mobile Push](#mobile-push)
+    - [API Actions](#api-actions)
+  - [Simple Queue Service (SQS)](#simple-queue-service-sqs)
+    - [Resource-based Access Control Policies](#resource-based-access-control-policies)
+    - [More on Polling Types](#more-on-polling-types)
+    - [Message Data](#message-data-1)
+    - [API Actions](#api-actions-1)
+  - [Simple Workflow Service](#simple-workflow-service)
+  - [Step Functions](#step-functions)
+    - [State Types and Transitions](#state-types-and-transitions)
+  - [API Gateway](#api-gateway)
+    - [Resources and Methods](#resources-and-methods)
+    - [Deployment and Stages](#deployment-and-stages)
+    - [Caching and Monitoring](#caching-and-monitoring)
+
 ## AWS Application Services
 Notes taken from DevAssociate course on Linux Academy
 

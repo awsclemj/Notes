@@ -1,3 +1,8 @@
+- [Kubernetes Architecture](#kubernetes-architecture)
+  - [Kubernetes Cluster Architecture](#kubernetes-cluster-architecture)
+  - [API Primitives](#api-primitives)
+  - [Kubernetes Services and Network Primitives](#kubernetes-services-and-network-primitives)
+
 # Kubernetes Architecture
 Notes taken via Linux Academy's Certified Kubernetes Admin course.
 

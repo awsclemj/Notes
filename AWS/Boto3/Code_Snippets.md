@@ -1,3 +1,7 @@
+- [Boto3 Code Snippets](#boto3-code-snippets)
+  - [Stop EC2 Instances Nightly](#stop-ec2-instances-nightly)
+  - [Backing up EC2 Instances](#backing-up-ec2-instances)
+
 ## Boto3 Code Snippets
 All credit goes to Linux Academy. More snippets can be found [here](https://github.com/linuxacademy/content-lambda-boto3)
 

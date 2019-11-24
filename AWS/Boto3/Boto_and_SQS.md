@@ -1,3 +1,6 @@
+- [Using Lambda/Boto3 with SQS](#using-lambdaboto3-with-sqs)
+  - [Triggering Lambda from SQS](#triggering-lambda-from-sqs)
+
 ## Using Lambda/Boto3 with SQS
 All credit for code snippets goes to Linux Academy. Notes were taken from their course content.
 

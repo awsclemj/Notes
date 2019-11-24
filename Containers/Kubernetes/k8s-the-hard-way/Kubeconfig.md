@@ -1,3 +1,8 @@
+- [Kubeconfig](#kubeconfig)
+  - [What is a kubeconfig and why do we need it?](#what-is-a-kubeconfig-and-why-do-we-need-it)
+  - [Generating kubeconfigs](#generating-kubeconfigs)
+  - [Distributing the Kubeconfigs](#distributing-the-kubeconfigs)
+
 ## Kubeconfig
 Notes taken from Linux Academy's Kubernetes the Hard Way course.
 

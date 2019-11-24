@@ -1,3 +1,9 @@
+- [Using Boto with S3](#using-boto-with-s3)
+  - [Resizing Images](#resizing-images)
+  - [Importing CSVs into DynamoDB](#importing-csvs-into-dynamodb)
+  - [Transcoding Video with S3 and Elastic Transcoder](#transcoding-video-with-s3-and-elastic-transcoder)
+  - [Backing up DynamoDB Tables to S3](#backing-up-dynamodb-tables-to-s3)
+
 ## Using Boto with S3
 All credit for code snippets goes to Linux Academy. Notes were taken from their course content.
 

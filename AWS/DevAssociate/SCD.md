@@ -1,3 +1,20 @@
+- [Storage and Content Delivery](#storage-and-content-delivery)
+  - [S3 Essentials](#s3-essentials)
+  - [Uploading Data to S3](#uploading-data-to-s3)
+  - [S3 Performance](#s3-performance)
+  - [S3 Permissions](#s3-permissions)
+  - [S3 Encryption](#s3-encryption)
+  - [Object Versioning](#object-versioning)
+    - [Enabling Versioning](#enabling-versioning)
+    - [Deleting Versioned Objects](#deleting-versioned-objects)
+    - [Restoring Versioned Objects](#restoring-versioned-objects)
+  - [Storage Classes](#storage-classes)
+  - [Lifecycle Policies](#lifecycle-policies)
+  - [Static Website Hosting](#static-website-hosting)
+  - [CloudFront Basics](#cloudfront-basics)
+    - [Updating Cached Files](#updating-cached-files)
+    - [Signed URLs](#signed-urls)
+
 ## Storage and Content Delivery
 * Notes taken via Linux Academy's DevAssociate course
 

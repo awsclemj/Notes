@@ -1,3 +1,11 @@
+- [Boto3 - Basics](#boto3---basics)
+	- [What is Boto3?](#what-is-boto3)
+	- [Boto3 Clients](#boto3-clients)
+	- [Boto3 Resources](#boto3-resources)
+	- [Definitions](#definitions)
+	- [More on Botocore](#more-on-botocore)
+	- [Code Examples](#code-examples)
+
 ## Boto3 - Basics
 
 ### What is Boto3?

@@ -1,3 +1,11 @@
+- [Network Protocol Basics](#network-protocol-basics)
+	- [Internet Protocol (IP)](#internet-protocol-ip)
+	- [Internet Control Message Protocol (ICMP)](#internet-control-message-protocol-icmp)
+	- [User Datagram Protocol (UDP)](#user-datagram-protocol-udp)
+	- [Transmission Control Protocol (TCP)](#transmission-control-protocol-tcp)
+	- [Important Protocols](#important-protocols)
+		- [Domain Name System (DNS)](#domain-name-system-dns)
+
 ## Network Protocol Basics
 
 ### Internet Protocol (IP)

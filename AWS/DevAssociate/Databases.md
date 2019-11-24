@@ -1,3 +1,19 @@
+- [Databases in AWS](#databases-in-aws)
+  - [DynamoDB Overview](#dynamodb-overview)
+    - [Pricing](#pricing)
+    - [Core Concepts](#core-concepts)
+    - [Provisioned Throughput](#provisioned-throughput)
+    - [Local and Global Secondary Indexes](#local-and-global-secondary-indexes)
+    - [Common Errors and Limits](#common-errors-and-limits)
+    - [DAX](#dax)
+    - [DDB Throttling](#ddb-throttling)
+    - [DDB Streams and Lambda](#ddb-streams-and-lambda)
+    - [DDB Auto Scaling and On-Demand](#ddb-auto-scaling-and-on-demand)
+  - [Other Database Products](#other-database-products)
+    - [RDS](#rds)
+    - [Redshift](#redshift)
+    - [Elasticache](#elasticache)
+
 ## Databases in AWS
 All notes taken from the DevAssociate course in Linux Academy
 

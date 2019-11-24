@@ -1,3 +1,24 @@
+- [Server-based Compute](#server-based-compute)
+  - [EC2 Fundamentals](#ec2-fundamentals)
+    - [Amazon Machine Images (AMIs)](#amazon-machine-images-amis)
+    - [Purchasing Options](#purchasing-options)
+  - [EC2 Instance Configuration](#ec2-instance-configuration)
+    - [Bootstrapping and User-data/Metadata](#bootstrapping-and-user-datametadata)
+    - [EC2 Key Pairs](#ec2-key-pairs)
+  - [Storage Basics](#storage-basics)
+    - [Elastic Block Store (EBS)](#elastic-block-store-ebs)
+      - [Snapshots](#snapshots)
+    - [Instance Store](#instance-store)
+    - [Elastic File System (EFS)](#elastic-file-system-efs)
+  - [Elastic Load Balancers](#elastic-load-balancers)
+    - [Maintaing Session State](#maintaing-session-state)
+  - [Elastic Container Service](#elastic-container-service)
+    - [Why Use ECS?](#why-use-ecs)
+    - [Working with ECS](#working-with-ecs)
+    - [Docker Essentials](#docker-essentials)
+    - [IAM Roles for ECS Tasks](#iam-roles-for-ecs-tasks)
+  - [Elastic Beanstalk](#elastic-beanstalk)
+
 ## Server-based Compute
 * Notes taken from the AWS Developer Associate course on Linux Academy
 

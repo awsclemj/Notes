@@ -1,3 +1,13 @@
+- [AWS Serverless Compute Services](#aws-serverless-compute-services)
+  - [Lambda Essentials](#lambda-essentials)
+  - [Functions and Events](#functions-and-events)
+  - [Function Configuration](#function-configuration)
+  - [Function Packages](#function-packages)
+  - [Versions and Aliases](#versions-and-aliases)
+  - [API Actions](#api-actions)
+  - [Environment Variables](#environment-variables)
+  - [Example Use Cases](#example-use-cases)
+
 ## AWS Serverless Compute Services
 * All notes taken from Linux Academy Dev Associate course.
 

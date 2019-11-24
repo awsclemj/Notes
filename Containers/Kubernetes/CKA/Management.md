@@ -1,3 +1,8 @@
+- [Managing the Kubernetes Cluster](#managing-the-kubernetes-cluster)
+  - [Upgrading the Cluster](#upgrading-the-cluster)
+  - [Upgrading/Decommissioning Nodes Within a Cluster](#upgradingdecommissioning-nodes-within-a-cluster)
+  - [Backing up/Restoring the Cluster](#backing-uprestoring-the-cluster)
+
 # Managing the Kubernetes Cluster
 Notes taken via Linux Academy's Certified Kubernetes Admin course.
 

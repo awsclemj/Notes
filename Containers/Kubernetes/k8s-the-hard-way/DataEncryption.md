@@ -1,3 +1,7 @@
+- [Kubernetes Data Encryption Config and Key](#kubernetes-data-encryption-config-and-key)
+  - [What is the Data Encryption Config?](#what-is-the-data-encryption-config)
+  - [Generating the Data Encryption Config](#generating-the-data-encryption-config)
+
 ## Kubernetes Data Encryption Config and Key
 Notes taken from Linux Academy's Kubernetes the Hard Way course.
 

@@ -1,3 +1,11 @@
+- [Kubernetes Networking](#kubernetes-networking)
+  - [Pod and Node Networking](#pod-and-node-networking)
+  - [Container Network Interface](#container-network-interface)
+  - [Service Networking](#service-networking)
+  - [Ingress and Load Balancers](#ingress-and-load-balancers)
+    - [Load Balancers](#load-balancers)
+    - [Ingress](#ingress)
+
 # Kubernetes Networking
 Notes taken via Linux Academy's Certified Kubernetes Admin course.
 

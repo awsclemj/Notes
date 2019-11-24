@@ -1,3 +1,15 @@
+- [Building a Kubernetes Cluster](#building-a-kubernetes-cluster)
+  - [Release Binaries, Provisioning, and Types of Clusters](#release-binaries-provisioning-and-types-of-clusters)
+  - [Installing k8s on the Master and Worker Nodes](#installing-k8s-on-the-master-and-worker-nodes)
+  - [Building a Highly Available Cluster](#building-a-highly-available-cluster)
+    - [etcd](#etcd)
+      - [Installing a Stacked etcd Topology](#installing-a-stacked-etcd-topology)
+  - [Configuring Secure Cluster Communications](#configuring-secure-cluster-communications)
+    - [Using kubectl](#using-kubectl)
+      - [Users](#users)
+      - [Pods](#pods)
+  - [Testing Cluster Performance](#testing-cluster-performance)
+
 # Building a Kubernetes Cluster
 Notes taken via Linux Academy's Certified Kubernetes Admin course.
 

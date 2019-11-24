@@ -1,3 +1,14 @@
+- [Kubernetes Basics - Getting Started](#kubernetes-basics---getting-started)
+  - [Kubernetes Architecture](#kubernetes-architecture)
+  - [Client Tools](#client-tools)
+  - [CA and TLS Certificates](#ca-and-tls-certificates)
+    - [What certificates do we need?](#what-certificates-do-we-need)
+    - [Provisioning a CA](#provisioning-a-ca)
+    - [Generating Client Certs](#generating-client-certs)
+    - [Generating the API server certificate](#generating-the-api-server-certificate)
+    - [Generating the Service Account Key Pair](#generating-the-service-account-key-pair)
+    - [Distributing Certificates to Servers](#distributing-certificates-to-servers)
+
 ## Kubernetes Basics - Getting Started
 Notes taken from Linux Academy's Kubernetes the Hard Way course.
 

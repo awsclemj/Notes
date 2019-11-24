@@ -1,3 +1,8 @@
+- [Path Decision Algorithm](#path-decision-algorithm)
+  - [Definitions](#definitions)
+  - [Algorithm](#algorithm)
+  - [Attribute Specifics](#attribute-specifics)
+
 # Path Decision Algorithm
 ## Definitions
 * AS Path - An ordered list of all the autonomous systems through which this update has passed. Mandatory.

@@ -1,3 +1,18 @@
+- [Identity and Access Management in AWS](#identity-and-access-management-in-aws)
+  - [IAM Essentials](#iam-essentials)
+    - [Best practices for root accounts](#best-practices-for-root-accounts)
+  - [IAM Policies](#iam-policies)
+  - [IAM Users](#iam-users)
+  - [IAM Groups](#iam-groups)
+  - [IAM Roles](#iam-roles)
+  - [Security Token Service (STS)](#security-token-service-sts)
+    - [STS API Call Examples](#sts-api-call-examples)
+  - [IAM API Access Keys](#iam-api-access-keys)
+  - [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
+    - [KMS API Actions](#kms-api-actions)
+  - [Amazon Inspector](#amazon-inspector)
+  - [Cognito Basics](#cognito-basics)
+
 ## Identity and Access Management in AWS
 * Notes taken via Linux Academy Dev Associate course
 
