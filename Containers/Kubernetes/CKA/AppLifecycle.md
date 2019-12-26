@@ -40,10 +40,10 @@ spec:
         name: app
 ```
 
-To create the Deployment: `kubectl apply -f <deployment.yaml> --record`
-To check the rollout status: `kubectl rollout status deployments kubeserve`
-To list the new ReplicaSet: `kubectl get replicasets`
-To scale your Deployment: `kubectl scale deployment kubeserve --replicas=5`
+To create the Deployment: `kubectl apply -f <deployment.yaml> --record`  
+To check the rollout status: `kubectl rollout status deployments kubeserve`  
+To list the new ReplicaSet: `kubectl get replicasets`  
+To scale your Deployment: `kubectl scale deployment kubeserve --replicas=5`  
 
 ### Updating the App
 K8s allows you to update you application without having to take it down for end users. There are a couple ways to do this.
