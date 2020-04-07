@@ -5,8 +5,9 @@
   - [Routing Fundamentals](#routing-fundamentals)
     - [Overview](#overview)
     - [BGP Overview](#bgp-overview)
-    - [Autonomous Systems](#autonomous-systems)
-    - [iBGP and eBGP](#ibgp-and-ebgp)
+      - [Autonomous Systems](#autonomous-systems)
+      - [iBGP and eBGP](#ibgp-and-ebgp)
+      - [BGP Path Selection](#bgp-path-selection)
 
 # Switching and Routing Fundamentals
 Notes are taken from Linux Academy's Advanced Networking Specialty course
@@ -56,7 +57,7 @@ Notes are taken from Linux Academy's Advanced Networking Specialty course
 * A registered ASN is required to exhange information via BGP
 * **Multi-Exit Descriminators** can be used to tell neighboring ASes which path is preferred for receiving traffic. Lower MED wins. 
 
-### Autonomous Systems
+#### Autonomous Systems
 * Each AS has a globally-unique identifier assigned
 * Private ASNs also exist and must not be exposed to the Internet
 * Public ASNs are assigned by IANA. Requirements:
@@ -69,9 +70,21 @@ Notes are taken from Linux Academy's Advanced Networking Specialty course
 * BGP hijacking 
 * Networks within an AS use an IGP such as OSPF, IS-IS, RIP, or EIGRP
 
-### iBGP and eBGP
+#### iBGP and eBGP
 * iBGP - interior
   * IGP version of BGP -- only communicates within an AS. Usually used on border routers
   * Full mesh topology is necessary, as routes are not re-advertised to neighbors if they are learned via iBGP
 * eBGP - exterior
   * Used to exchange routes with other ASes
+
+#### BGP Path Selection
+* AS_PATH prepending is used to artificially inflate the cost of a path
+* Weight can be used to set preference for a particular path on the local router
+  * Not propagated to other routers
+  * Higher metric is the preferred route
+* Local preference allowes routers in ASes to influence which route is used to enter an AS
+  * Replicated to next-hop neighbor
+  * Higher metric is preferred
+* MED is used when local preference and AS_PATH are the same between two or more routes
+  * Lower MED is the preferred path
+  * Propagated to adjacent ASes externally
