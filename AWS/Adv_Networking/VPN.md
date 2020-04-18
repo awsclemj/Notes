@@ -7,6 +7,7 @@
     - [VPN High-Availability](#vpn-high-availability)
     - [VPN CloudHub](#vpn-cloudhub)
     - [Transit VPCs](#transit-vpcs)
+  - [Transit Gateway Overview](#transit-gateway-overview)
 
 # Hybrid Networking - VPN
 Notes are taken from Linux Academy's Advanced Networking Specialty course
@@ -71,3 +72,19 @@ Notes are taken from Linux Academy's Advanced Networking Specialty course
 * Transit VPCs are created using software VPN appliances and allow for transitive routing between VPCs
 * The VPN appliance connects to the customer's VPCs and also to the customer's on-prem
 * Customer's on-prem recieves routes to all VPCs and VPCs receive routes to other VPCs and customer's on-prem
+
+## Transit Gateway Overview
+* AWS network did not support transitive networking until TGW was introduced. This led to complex solutions such as Transit VPC for edge-to-edge routing
+* TGW similifies this by allowing for a centralized managment structure
+* Traditional hub-spoke model
+  * Attachments for VPCs, VPNs, and DX
+* TGW controls how traffic is routed between these elements
+* ECMP is supported between on-prem connections, enabling load balancing and aggregate bandwidth
+* Limitations:
+  * 5 TGWs per account
+  * 5 TGW attachments per VPC
+  * 5000 total attachments per TGW
+  * 1.25 Gbps per VPN connection
+  * 50 Gbps bandwidth per VPC
+  * 10,000 routes
+  * Overlapping CIDRs not supported
