@@ -16,7 +16,7 @@ Notes are taken from Linux Academy's Advanced Networking Specialty course
   * Classic - layer 4 or 7
 
 ### Key facts
-* Minimum of /27 subnet must be used with a minimum of 8 free IP addresses
+* Minimum of /28 subnet must be used with a minimum of 8 free IP addresses
 * SGs/NACLs apply to ELBs
 * Connection draining ensures client connections are closed before an instance is taken out of service. Default: 5 minutes
 * SSL security policies can be applied to your ELB to restrict what ciphers are used in an SSL transaction
