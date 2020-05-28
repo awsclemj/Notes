@@ -83,7 +83,7 @@ Notes are taken from Linux Academy's Advanced Networking Specialty course
 ### Subnetting
 * The ability to take a larger network and divide into smaller networks
 * Example: You are assigned a network address of 192.168.5.0/24. Subnet this address to create networks capable of a capacity of 20 hosts.
-  * /27 mask = 3 borrowed bits = 16 networks with 30 hosts per network
+  * /27 mask = 3 borrowed bits = 8 networks with 30 hosts per network
 
 ## IPv6
 
