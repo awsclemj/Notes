@@ -4,8 +4,8 @@
     - [CloudWatch](#cloudwatch)
     - [VPC Flow Logs](#vpc-flow-logs)
     - [AWS Config](#aws-config)
-    - [Amazon Inspector](#amazon-inspector)
       - [Best practices](#best-practices)
+    - [Amazon Inspector](#amazon-inspector)
     - [Trusted Advisor](#trusted-advisor)
     - [Service-specific Logging](#service-specific-logging)
       - [S3 Events](#s3-events)
@@ -139,6 +139,13 @@ Notes taken from internal security bootcamp and Linux Academy course
     * Define custom rules via Lambda function
 * Requires read-only role to enable to recorder
 * (Optional) can stream changes to SNS (ex. for external config management)
+  
+#### Best practices
+* Configure max visibility (all regions, all resources)
+* Store history and snapshots in a secured S3 bucket
+* Use CW Events to filter AWS Config notifications and take action
+* Turn on periodic snapshots with min frequency of once per day
+* Author custom rules with AWS Config Rule Development Kit (RDK)
 
 ### Amazon Inspector
 * Analyze behavior of AWS resources and check for potential vulnerabilities
@@ -153,13 +160,6 @@ Notes taken from internal security bootcamp and Linux Academy course
     * Rules and reports built-in to Inspector
     * Best practice, common compliance standards, and vulnerability analysis
   * Provides recommendations for resolving issues
-  
-#### Best practices
-* Configure max visibility (all regions, all resources)
-* Store history and snapshots in a secured S3 bucket
-* Use CW Events to filter AWS Config notifications and take action
-* Turn on periodic snapshots with min frequency of once per day
-* Author custom rules with AWS Config Rule Development Kit (RDK)
 
 ### Trusted Advisor
 * Best practice recommendation engine that provides proactive real-time guidance
