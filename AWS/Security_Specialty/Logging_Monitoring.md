@@ -111,12 +111,16 @@ Notes taken from internal security bootcamp and Linux Academy course
 ### VPC Flow Logs
 * Captures info about IP traffic going to/from network interfaces in your VPC
 * Uses:
-  * Diagnose overly-resitrctive SG rules
+  * Diagnose overly-restrictive SG rules
   * Monitor traffic
   * Determine direction of traffic to/from network interfaces
 * Can be stored in CW logs or S3
-* Does not include packet captures
+* Does not include deep packet inspection
   * You can use traffic mirroring for this; only available on Nitro
+* Capture points:
+  * VPC - automatically applied to ever subnet and ENI in the VPC
+  * Subnet - applies to every ENI in that subnet
+  * Network interface - only applied to one ENI
 
 ### AWS Config
 * Evaluate AWS resource configuration for desired settings
@@ -184,6 +188,9 @@ Notes taken from internal security bootcamp and Linux Academy course
   * Referer
   * User-Agent
 * Especially useful for static S3 websites, or if you have sensitive information in the bucket
+* Log Delivery group must be granted write access to the log bucket
+* Logging is **not** near real-time and are delivered on a best-effort basis
+  * Changes may take up to an hour to propagate
 
 #### CloudFront Access Logs
 * Create log files that contain detailed information about user requests
@@ -262,14 +269,19 @@ Notes taken from internal security bootcamp and Linux Academy course
 * Policy lockdown
 
 ## Logging at Scale
+* Multi-account strategy via AWS Organizations
+* Configure IAM user(s) in the master account
+  * Use IAM roles for cross-account access
 * Log archive account
   * Versioned S3 bucket
     * Restricted
     * MFA delete
+    * Encrypted at rest
   * CloudTrail logs
   * Security logs
   * Single source of truth
   * Alarm on user login
+  * Logs are read-only for most job functions
 * Security account
   * Security tools/auditing
   * GuardDuty
