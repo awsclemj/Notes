@@ -6,6 +6,7 @@
     - [Account boundaries in AWS](#account-boundaries-in-aws)
   - [IAM policy types](#iam-policy-types)
     - [Identity policies](#identity-policies)
+    - [Permissions Boundaries](#permissions-boundaries)
     - [Resource policies](#resource-policies)
       - [S3](#s3)
       - [KMS](#kms)
@@ -108,6 +109,13 @@ Notes taken from internal bootcamp
   * Change permissions in the managed policy to change permissions for all principals it's attached to
 * Inline
   * Specific, narrowly-scoped policy that only applies to the principal it's attached to
+
+### Permissions Boundaries
+* A set of access which an entity can **never** exceed
+* Does not grant permissions, only restricts
+  * ex: even if it allows API actions, identity policies need an explicit allow
+* Always processed first, starting with organizational (SCPs) then identity
+* Effective permissions are a merge of boundary, identity policy, and resource permissions
 
 ### Resource policies
 
