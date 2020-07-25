@@ -2,7 +2,9 @@
   - [Exam tips](#exam-tips)
   - [Shared Responsibility Model](#shared-responsibility-model)
   - [Access Restrictions](#access-restrictions)
-    - [S3 Pre-signed URLS](#s3-pre-signed-urls)
+    - [S3](#s3)
+      - [S3 Pre-signed URLS](#s3-pre-signed-urls)
+      - [S3 Cross-region Replication](#s3-cross-region-replication)
     - [Cloudfront](#cloudfront)
       - [Signed URLs and Cookies](#signed-urls-and-cookies)
       - [Geo Restrictions](#geo-restrictions)
@@ -36,13 +38,35 @@ Notes taken from internal bootcamp
 
 ## Access Restrictions
 
-### S3 Pre-signed URLS
+### S3
+
+#### S3 Pre-signed URLS
 * `aws s3 presign <object name>`
 * User who accesses the resource will have permissions of the entity that generates the URL
 * Default expiry time is 1 hour; can be customized
 * You can give a subset of permissions to the accessing user
 
+#### S3 Cross-region Replication
+* Not retroactive
+* Unidirectional
+* Replicates unencrypted and SSE-S3 objects by default
+* SSE-C is not supported. SSE-KMS is but requires extra configuration
+* By default, ownership and ACLs are maintained. These can be modified
+* Storage class is maintained 
+* Lifecycle events are not replicated
+* Objects are not replicated if the bucket owner does not have permissions
+
 ### Cloudfront 
+* Supports SNI (server name identifier)
+  * Free, but browsers must support it
+* Dedicated IP SSL is supported by all browsers but costs extra
+* **Viewer Protocol Policy** - allows redirection of HTTP -> HTTPS
+* **Origin Protocol Policy** - protocol for CloudFront to communicate with origin
+* Integrates with AWS WAF
+* Access control via signed URLs/cookies
+* Basic white/blacklist geo-resrtiction per distro
+* Field-level encryption 
+* Lambda @ Edge
 
 #### Signed URLs and Cookies
 * Behaviors -> Restrict Viewer Access (creates private distro)
@@ -59,6 +83,7 @@ Notes taken from internal bootcamp
 * Built-in
   * Per-distribution basis
   * Whitelist or blacklist (either/or) -- based on country
+  * Very simple; cannot filter on user agents, cookies, etc. 
 * Third-party
   * Anything beyond country - state, region, latitude/longitude, user agent, etc.
 
