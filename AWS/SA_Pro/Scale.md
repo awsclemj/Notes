@@ -16,6 +16,15 @@
   - [DynamoDB Scaling](#dynamodb-scaling)
     - [Best practices](#best-practices)
     - [DynamoDB Accelerator (DAX)](#dynamodb-accelerator-dax)
+  - [CloudFront](#cloudfront)
+    - [Cache Invalidation](#cache-invalidation)
+    - [Other features](#other-features)
+  - [SNS](#sns)
+    - [Fan-out Architecture](#fan-out-architecture)
+  - [SQS](#sqs)
+    - [Loosely-Coupled with SQS](#loosely-coupled-with-sqs)
+    - [Standard vs. FIFO](#standard-vs-fifo)
+    - [Amazon MQ](#amazon-mq)
 # Architecting for Scale
 Notes taken from Linux Academy/ACG SA Pro 2020 course.
 
@@ -149,3 +158,62 @@ Some terms:
 * Microsecond response times
 * Great for read-intensive applications
 * If application caches locally, this is likely a waste
+
+## CloudFront
+* Delivers content to users faster by **caching** static and dynamic content at the edge
+* **Dynamic** delivery is achieved by using HTTP cookies forwarded from your origin
+  * Supports Adobe Flash Media Server's RTMP protocol
+* **Web distributions** also support media and live streaming, but must use HTTP(S)
+* Origins can be S3, EC2, ELB, or another web server. Multiple can be configured
+* Use **behaviors** to serve content based on URL path
+
+### Cache Invalidation
+* Simply delete the content from the origin and wait for cache TTL to expire
+* Request invalidation from CloudFront console/API for a certain URL path
+* Third party tools such as CloudBerry, CDNPlanet, Ylastic
+
+### Other features
+* Zone apex records -- meaning no `www` or subdomain prefix
+* Geo-restriction
+
+## SNS
+* Enables public/subscribe (pub/sub) design pattern
+* **Topic** - a channel for publishing notifications
+* **Subscription** - configuring an **endpoint** to receive messages published to the topic
+* **Endpoint** - HTTP(S), email, SMS, SQS, push notifications, Lambda
+
+### Fan-out Architecture
+* Perform tasks in parallel
+* Say a user uploads an image to an S3 bucket:
+
+S3 event -> SNS topic -> SES -> Email
+                      -> SQS -> Image resize queue
+                      -> Lambda -> Amazon Rekognition
+
+## SQS
+* Reliable and highly-scalable messaging queue
+* Available integration with KMS for encrypted messaging
+* **Transient storage** - default 4 days, up to 14 days
+* Optional FIFO capability
+* Max message size of 256KB, but using a special Java SDK can increase up to 2GB
+
+### Loosely-Coupled with SQS
+* Queuing allows certain systems to experience downtime without losing data
+  * Also allows independent scaling of resources
+* Consider a scenario of an on-prem ERP system with SQS in the cloud:
+
+ERP -> middleware -> SQS -> EC2 worker -> DynamoDB
+
+* SQS can handle large bursts of requests, queue them, and the EC2 workers can be scaled to handle the surge of requests
+
+### Standard vs. FIFO
+* Standard - consistent delivery at least once, but may be out of order/duplicated
+* FIFO - first in, first out ordering
+  * One downside - if a message fails, all messages behind it will be stuck
+
+### Amazon MQ
+* Not part of SQS, but similar concept
+* Fully-managed service for Apache ActiveMQ
+* ActiveMQ API, JMS, NMS, MQTT, WebSocket
+* Designed as drop-in replacement (lift and shift) for on-prem message brokers
+* Use SQS if you're developing a new application from scratch
