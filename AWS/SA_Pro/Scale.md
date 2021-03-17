@@ -126,7 +126,7 @@ Some terms:
 |Partition key|Unique identifier for each record; sometimes called **hash key**|
 |Sort key|In combination with partition key, optional second part of a composite key that defines storage order; sometimes called a **range key**|
 
-|Partition Calculations|
+|Type |Calculation|
 | --- | --- |
 |Capacity|(Total RCU / 3000) + (Total WCU / 1000)|
 |Size|Total size / 10 GB|
