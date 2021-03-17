@@ -186,8 +186,8 @@ Some terms:
 * Perform tasks in parallel
 * Say a user uploads an image to an S3 bucket:
 
-S3 event -> SNS topic -> SES -> Email
-                      -> SQS -> Image resize queue
+S3 event -> SNS topic -> SES -> Email  
+                      -> SQS -> Image resize queue  
                       -> Lambda -> Amazon Rekognition
 
 ## SQS
