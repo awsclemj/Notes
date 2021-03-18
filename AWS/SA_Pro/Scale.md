@@ -25,6 +25,18 @@
     - [Loosely-Coupled with SQS](#loosely-coupled-with-sqs)
     - [Standard vs. FIFO](#standard-vs-fifo)
     - [Amazon MQ](#amazon-mq)
+  - [Lambda, SAM, EventBridge](#lambda-sam-eventbridge)
+    - [Lambda](#lambda)
+      - [Fan-out with Lambda](#fan-out-with-lambda)
+    - [Serverless Application Model (SAM)](#serverless-application-model-sam)
+    - [EventBridge](#eventbridge)
+  - [SWF](#swf)
+    - [How it works](#how-it-works)
+  - [Step Functions and Batch](#step-functions-and-batch)
+    - [Step Functions](#step-functions)
+      - [Finite State Machine](#finite-state-machine)
+    - [Batch](#batch)
+  - [EMR](#emr)
 # Architecting for Scale
 Notes taken from Linux Academy/ACG SA Pro 2020 course.
 
@@ -217,3 +229,84 @@ ERP -> middleware -> SQS -> EC2 worker -> DynamoDB
 * ActiveMQ API, JMS, NMS, MQTT, WebSocket
 * Designed as drop-in replacement (lift and shift) for on-prem message brokers
 * Use SQS if you're developing a new application from scratch
+
+## Lambda, SAM, EventBridge
+This lecture discusses serverless patterns
+
+### Lambda
+* Run code without the need of provisioning infra
+* Supports Node, Python, Java, Go, C#, and custom runtimes
+* Useful for creating serverless architectures
+* Code is stateless and executed on an event basis
+  * e.g. S3 event, SNS, SQS, DDB Stream)
+* No fundamental limits to scaling a function
+
+#### Fan-out with Lambda
+* Event/instruction comes in and we can process the data in parallel with multiple Lambda functions
+* Consider a user uploading a photo using a mobile app
+* SQS -> Lambda image receipt -> (in parallel) Send thank you via SES, Resize and upload to S3, Extract metadata and put to DDB
+
+### Serverless Application Model (SAM)
+* Framework for building serverless apps on AWS; extension of CloudFormation
+* YAML configuration language
+* CLI functionality to create, deploy, and update serverless apps
+* Enables local testing of serverless apps via Docker emulator
+
+### EventBridge
+* Links a variety of AWS and third party apps to rule logic for launching other event-based actions
+* Event source -> EventBridge -> rule -> target (Lambda, SNS, SQS, etc)
+
+## SWF
+* Think of as a status-tracking system; create distributed async workflows
+* Sequential and parallel processing
+* Tracks state of workflow via API
+* Best suited for human-enabled workflows like order fulfillment 
+* For new apps -- look at Step Functions vs. SWF
+
+### How it works
+* **Activity worker** - program that interacts with SWF to get tasks, process them, and return results
+* **Decider** - program that controls coordination of tasks such as ordering, concurrency, and scheduling
+
+## Step Functions and Batch
+
+### Step Functions
+* Managed workflow/orchestration platform
+* Define your app as a state machine
+* Create tasks, sequential/parallel steps, branching paths, or timers
+* Amazon State Language (JSON)
+* Apps can interact/update the stream via API
+
+#### Finite State Machine
+* Computer science concept that is used to describe what step functions do
+* Object can assume different states in a workflow's lifecycle
+* Different branching/logic/etc. based on defined conditions
+
+### Batch
+* Management tool for creating, managing, and executing batch-oriented tasks using EC2
+* Create a managed or unmanaged compute environment
+  * Spot or on-demand instances, # of vCPUs
+* Create job queue with priority and assigned to compute environment
+* Create job definition (script, JSON, environment variables, container images, etc.)
+* Schedule a job
+
+## EMR
+* Collection of multiple OSS projects wrapped up into an easy to deploy product
+  * Hadoop HDFS - file system that stores hadoop data in a distributed manner
+  * Hadoop MapReduce - Framework used to process data
+  * Zookeeper - coordinates resources involved in MapReduce
+  * Oozie - workflow framework
+  * Pig - scripting framework
+  * Hive - SQL interface
+  * Mahout - ML
+  * HBase - Columnar data store
+  * Sqoop - data transfer
+  * Flume - log collection
+  * Ambari - management and monitoring
+* Managed Hadoop framework for processing huge amounts of data
+* Also supports Apache Spark, HBase, Presto, and Flink
+* Log analysis, financial analysis, and ETL activities
+* **Step** - programmatic task for performing some process on data
+* **Cluster** - collection of EC2 instances provisioned by EMR to run your steps
+  * Master node - controller
+  * Core nodes - HDFS
+  * Task nodes - worker nodes with ephemeral storage; scale these as workload increases
